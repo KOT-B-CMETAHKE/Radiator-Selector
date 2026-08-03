@@ -28,9 +28,9 @@ def run(problematic_windows, handler_result):
     if handler_result["outcome"] == "MODEL_PROCESS_SUCCESS":
         handler_status = get_status_from_issues(handler_result["issues"])
         if handler_status == "OK":
-            print("Модель обработана успешно")
+            print("Обработка модели завершена")
         elif handler_status == "WARNING":
-            print("Модель обработана с предупреждениями")
+            print("Обработка модели завершена с предупреждениями каталога")
             display_issues(handler_result["issues"])
         else:
             print(handler_result["issues"])
@@ -100,7 +100,8 @@ def run(problematic_windows, handler_result):
                 print()
         
         if len(problematic_windows) != 0:
-            print(u"Ошибки и предупреждения окон, для которых связь с помещением установить не удалось:")
+            print(u"Ошибки и предупреждения окон:")
+            print()
             for window_id, window_info in problematic_windows.items():
                 print(u"Окно (id:{}):".format(window_id))
                 display_issues(window_info["issues"])
